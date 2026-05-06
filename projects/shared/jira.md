@@ -10,7 +10,7 @@ updated: 2026-05-06
 
 | Projeto | Quando consultar |
 |---|---|
-| **ANAP** | Triagem de bugs e problemas reportados pelo cliente. Consulta padrão. |
+| **ANAP** | Configurações, análises e triagem de problemas reportados pelo cliente. Consulta padrão. Não inclui bugs confirmados ou melhorias aprovadas. |
 | **AP** | Tarefas confirmadas de desenvolvimento. Consulta padrão. |
 | **ANIWS** | Somente se o assunto envolver a Workstation e não estiver mapeado em ANAP ou AP, mas puder ter relação com os projetos atuais. |
 | **UX** | Mockups e prototipagem referentes a todos os projetos. |

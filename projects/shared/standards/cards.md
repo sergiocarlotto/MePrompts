@@ -26,6 +26,14 @@ updated: 2026-05-06
 
 > Um card no AP pressupõe que a análise no ANAP já foi concluída.
 
+## Campos fixos ao abrir cards por aqui
+
+| Campo | Valor padrão |
+|---|---|
+| Zoho Desk Ticket (`customfield_10227`) | `não se aplica` |
+| Nome Relator (`customfield_10447`) | `Sérgio_Carlotto` |
+| Origem (`customfield_10287`) | `ANA` (id: 10394) |
+
 ## Estrutura padrão de um card no ANAP
 
 ```

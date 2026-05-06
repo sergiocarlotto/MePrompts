@@ -15,6 +15,10 @@ updated: 2026-05-06
 | **ANIWS** | Somente se o assunto envolver a Workstation e não estiver mapeado em ANAP ou AP, mas puder ter relação com os projetos atuais. |
 | **UX** | Mockups e prototipagem referentes a todos os projetos. |
 
+## Padrão para "cards da minha equipe"
+
+Quando o usuário perguntar sobre os cards da equipe sem especificar o projeto, consultar **ANAP** por padrão.
+
 ## Projetos fora da lista
 
 Nunca consultar ou escrever em projetos fora dos listados acima.

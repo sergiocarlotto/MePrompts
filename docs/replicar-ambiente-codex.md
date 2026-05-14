@@ -43,7 +43,6 @@ Repositorios conhecidos no ambiente original:
 | GitHub | C:\Users\sergi\OneDrive\Documents\GitHub\MePrompts | https://github.com/sergiocarlotto/MePrompts.git | main |
 | GitHub | C:\Users\sergi\OneDrive\Documents\GitHub\AssistantsAI | https://github.com/sergiocarlotto/AssistantsAI.git | main |
 | GitHub | C:\Users\sergi\OneDrive\Documents\GitHub\plugin-marketplace | https://github.com/ArcadeaGroup/plugin-marketplace.git | main |
-| GitHub | C:\Users\sergi\OneDrive\Documents\GitHub\arcadea_worshop | SEM REMOTE CONFIGURADO no ambiente original | main |
 | GitLab Animati | C:\Users\sergi\OneDrive\Documents\Gitlab Animati\animati-ai | https://git.animati.com.br/animati-pacs/pacs-services/animati-ai.git | main |
 | GitLab Animati | C:\Users\sergi\OneDrive\Documents\Gitlab Animati\pacs | https://git.animati.com.br/animati-pacs/pacs.git | master |
 | GitLab Animati | C:\Users\sergi\OneDrive\Documents\Gitlab Animati\pacs-core-front | https://git.animati.com.br/animati-pacs/pacs-core-front.git | master |
@@ -143,12 +142,6 @@ Sequencia obrigatoria de bootstrap:
    - `plugin-marketplace`:
      - caminho sugerido: `C:\Users\<usuario>\OneDrive\Documents\GitHub\plugin-marketplace`
      - clone: `git clone https://github.com/ArcadeaGroup/plugin-marketplace.git "C:\Users\<usuario>\OneDrive\Documents\GitHub\plugin-marketplace"`
-   - `arcadea_worshop`:
-     - caminho sugerido: `C:\Users\<usuario>\OneDrive\Documents\GitHub\arcadea_worshop`
-     - no ambiente original, este repo nao tem remote configurado;
-     - pergunte antes de prosseguir:
-       "O projeto `arcadea_worshop` nao tem remote configurado no ambiente original. Qual remote devo usar, ou voce prefere copiar essa pasta manualmente?"
-
 6. Clonar ou validar repositorios GitLab Animati
    - Para cada repo abaixo, se a pasta nao existir, clone. Se existir, valide remote/branch/status e nao sobrescreva nada.
    - Se qualquer clone do GitLab Animati falhar, pergunte:

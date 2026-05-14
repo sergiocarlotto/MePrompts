@@ -1,0 +1,22 @@
+{
+  "allow": [
+    "mcp__Jira__getAccessibleAtlassianResources",
+    "mcp__Jira__lookupJiraAccountId",
+    "mcp__Jira__searchJiraIssuesUsingJql",
+    "mcp__Jira__getJiraIssue",
+    "mcp__Jira__getJiraProjectIssueTypesMetadata",
+    "mcp__Jira__createJiraIssue",
+    "mcp__Jira__getJiraIssueTypeMetaWithFields",
+    "mcp__Jira__editJiraIssue",
+    "mcp__Jira__addCommentToJiraIssue",
+    "Bash(python3 -c ' *)",
+    "Bash(node -e ' *)",
+    "Bash(git commit -m ' *)",
+    "Bash(ls \"C:\\Users\\sergi\\OneDrive\\Documents\\GitHub\\MePrompts\")",
+    "Bash(ls \"C:\\Users\\sergi\\OneDrive\\Documents\\GitHub\\MePrompts\\projects\\assistants-ai\" && echo \"---\" && ls \"C:\\Users\\sergi\\OneDrive\\Documents\\GitHub\" 2>/dev/null)",
+    "Skill(update-config)",
+    "Skill(update-config:*)",
+    "Read(//c/Users/sergi/OneDrive/Documents/GitHub/**)",
+    "Edit(C:\\Users\\sergi\\.claude\\settings.json)"
+  ]
+}

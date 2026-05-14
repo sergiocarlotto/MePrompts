@@ -1,7 +1,7 @@
 ---
 file: replicar-ambiente-codex
 scope: global
-version: 2.2.0
+version: 2.3.0
 updated: 2026-05-14
 ---
 
@@ -58,7 +58,7 @@ Ferramentas e integracoes observadas no ambiente original:
 | npm | `npm` | `11.12.1`; no ambiente original `npm list -g --depth=0` falhava porque `C:\Users\sergi\AppData\Roaming\npm` nao existia |
 | ripgrep | `rg` | Disponivel via extensao VS Code `openai.chatgpt` |
 | Java/Maven/Ant | `java`, `mvn`, `ant` | Nao apareceram no PATH durante a auditoria |
-| Codex MCP | `atlassian` | URL `https://mcp.atlassian.com/v1/mcp/authv2` em `~\.codex\config.toml` |
+| Codex MCP | `atlassian` | URL `https://mcp.atlassian.com/v1/mcp/authv2` em `~\.codex\config.toml`; na auditoria atual `codex mcp list` retornou vazio, entao validar e recriar se necessario |
 | Claude MCP | `Jira` | User-scope, HTTP, URL `https://mcp.atlassian.com/v1/mcp/authv2`; no ambiente original falhou conexao no momento da auditoria |
 | Claude plugins | `superpowers@superpowers-marketplace` | instalado e habilitado, versao `5.0.7`, escopo user |
 | Claude plugins | `abs-animati@plugin-marketplace` | instalado e habilitado, versao `0.1.53`, escopo user |
@@ -132,6 +132,9 @@ Sequencia obrigatoria de bootstrap:
      - `projects\assistants-ai`
      - `projects\plugin-marketplace`
      - `projects\me-prompts`
+     - `projects\shared\permissions.json`
+     - `projects\shared\sync-claude-permissions.ps1`
+     - `projects\shared\setup-claude-permissions.md`
      - `docs\replicar-ambiente-codex.md`
 
 5. Clonar ou validar repositorios GitHub
@@ -142,6 +145,7 @@ Sequencia obrigatoria de bootstrap:
    - `plugin-marketplace`:
      - caminho sugerido: `C:\Users\<usuario>\OneDrive\Documents\GitHub\plugin-marketplace`
      - clone: `git clone https://github.com/ArcadeaGroup/plugin-marketplace.git "C:\Users\<usuario>\OneDrive\Documents\GitHub\plugin-marketplace"`
+
 6. Clonar ou validar repositorios GitLab Animati
    - Para cada repo abaixo, se a pasta nao existir, clone. Se existir, valide remote/branch/status e nao sobrescreva nada.
    - Se qualquer clone do GitLab Animati falhar, pergunte:
@@ -185,8 +189,19 @@ Sequencia obrigatoria de bootstrap:
    - No ambiente original, `~\.claude\settings.json` continha:
      - plugins habilitados: `superpowers@superpowers-marketplace` e `abs-animati@plugin-marketplace`;
      - marketplaces: `obra/superpowers-marketplace` e `ArcadeaGroup/plugin-marketplace`;
-     - permissoes para ferramentas MCP Jira e alguns comandos `python3`/`node`;
+     - permissoes para ferramentas MCP Jira, alguns comandos `python3`/`node`, `git commit`, leitura do `MePrompts`/GitHub e edicao do proprio `~\.claude\settings.json`;
      - permissao de skill `update-config`.
+   - A fonte canonica de permissoes fica no repo `MePrompts`:
+     - `projects\shared\permissions.json`
+     - `projects\shared\sync-claude-permissions.ps1`
+     - `projects\shared\setup-claude-permissions.md`
+   - Leia `projects\shared\setup-claude-permissions.md` antes de tentar sincronizar permissoes.
+   - O script `sync-claude-permissions.ps1` adapta caminhos do usuario original (`C:\Users\sergi` e `//c/Users/sergi`) para o usuario atual antes de aplicar as permissoes.
+   - O fluxo esperado em nova maquina e:
+     - criar manualmente `~\.claude\commands\sync-permissions.md` com o conteudo documentado em `setup-claude-permissions.md`;
+     - adicionar manualmente em `~\.claude\settings.json` a permissao para editar o proprio settings, ajustando o usuario local: `Edit(C:\\Users\\<usuario>\\.claude\\settings.json)`;
+     - executar `/sync-permissions` no Claude Code.
+   - Motivo: Claude Code pode bloquear alteracoes diretas em `~\.claude\settings*.json` e `~\.claude\commands\`; esses passos precisam ser manuais quando a ferramenta bloquear.
    - Procure pastas `.claude` nos repos.
    - No ambiente original foi encontrada:
      - `C:\Users\sergi\OneDrive\Documents\Gitlab Animati\pacs\.claude\settings.local.json`
@@ -237,6 +252,10 @@ Sequencia obrigatoria de bootstrap:
      - MCP Atlassian declarado em `[mcp_servers.atlassian]`
      - URL MCP Atlassian: `https://mcp.atlassian.com/v1/mcp/authv2`
    - Nao copie `~\.codex\auth.json`; refaca login/autenticacao na nova maquina.
+   - Na auditoria atual, `~\.codex\config.toml` ainda continha `[mcp_servers.atlassian]`, mas `codex mcp list` retornou `No MCP servers configured yet`. Se isso acontecer na nova maquina:
+     - trate como divergencia entre arquivo de config e CLI ativa;
+     - rode `codex mcp add atlassian --url https://mcp.atlassian.com/v1/mcp/authv2`;
+     - reabra/reinicie a sessao Codex se a lista continuar vazia.
    - Para configurar MCP Atlassian no Codex, use preferencialmente:
      - `codex mcp add atlassian --url https://mcp.atlassian.com/v1/mcp/authv2`
    - Depois valide:
@@ -341,6 +360,7 @@ Sequencia obrigatoria de bootstrap:
      - `claude --version`
      - `codex --version`
      - `codex mcp list`
+     - conferir se `projects\shared\permissions.json` existe e foi aplicado via `/sync-permissions`
      - `claude plugin marketplace list`
      - `claude plugin list`
      - `claude mcp list`

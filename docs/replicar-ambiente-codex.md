@@ -301,6 +301,13 @@ Sequencia obrigatoria de bootstrap:
      - `code --install-extension vscjava.vscode-java-test`
      - `code --install-extension vscjava.vscode-maven`
    - Se a instalacao de extensoes exigir marketplace/proxy/login, pergunte antes de continuar.
+   - Depois de instalar/abrir VS Code, garanta que uma pasta de projeto esteja aberta. O Codex/ChatGPT pode exibir `"add a project to use codex"` quando o VS Code esta aberto apenas com um arquivo solto ou sem workspace.
+   - Se essa mensagem aparecer:
+     - feche abas de arquivos soltos que apontem para caminhos antigos;
+     - use `File > Open Folder...` ou `Add Folder to Workspace...`;
+     - selecione a raiz de um repo clonado, por exemplo `MePrompts`, `pacs`, `animati-ai`, `AssistantsAI`, `plugin-marketplace` ou `pacs-core-front`;
+     - para trabalhar no prompt de replicacao, abra a pasta `MePrompts` e entao o arquivo `docs\replicar-ambiente-codex.md`;
+     - para trabalhar no PACS, abra a pasta raiz `pacs`, nao apenas um arquivo `.md`.
 
 13. Carregar regras compartilhadas
    - Leia no `MePrompts`:
